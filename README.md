@@ -580,3 +580,4 @@ Using the `preload()` to preload in advance reduces the load time at presentatio
 ```
 rewardedAd.preload();
 ```
+ 
