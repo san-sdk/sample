@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_native"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/request_ad_native" />
+
+
+            <Button
+                android:id="@+id/btn_request_itl"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/request_ad_itl" />
+
+            <Button
+                android:id="@+id/btn_request_rwd"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/request_ad_rwd" />
+
+
+            <Button
+                android:id="@+id/btn_request_banner"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/request_ad_banner" />
+
+
+            <Button
+                android:id="@+id/btn_request_banner250"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/request_ad_banner250" />
+
+            <FrameLayout
+                android:id="@+id/banner_container"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <FrameLayout
+                android:id="@+id/native_render_container"
+                android:layout_width="match_parent"
+                android:layout_height="340dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#dddddd"
+                    android:gravity="center"
+                    android:textSize="30sp"
+                    android:textColor="#ffffff"
+                    android:text="@string/native_container" />
+            </FrameLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

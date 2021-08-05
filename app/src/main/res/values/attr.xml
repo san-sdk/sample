@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RectFrame">
+        <attr name="rect_radio" format="float"/>
+    </declare-styleable>
+</resources>
