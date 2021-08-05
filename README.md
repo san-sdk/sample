@@ -1,2 +1,2 @@
-# Sample1
+# sample
 The SAN SDK Sample
