@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.san.ads.AdError;
 import com.san.ads.AdSize;
-import com.san.ads.BaseNativeAd;
 import com.san.ads.MediaView;
 import com.san.ads.SANBanner;
 import com.san.ads.SANInterstitial;
@@ -19,6 +18,7 @@ import com.san.ads.SANReward;
 import com.san.ads.base.IAdListener;
 import com.san.ads.core.SANAd;
 import com.san.ads.render.AdViewRenderHelper;
+import com.san.ads.render.SANNativeAdRenderer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -203,6 +203,7 @@ public class MainActivity extends AppCompatActivity {
             public void onAdLoaded(SANAd adWrapper) {
                 // Called when the ad for the given placementId has loaded.
                 renderNativeAdView(adWrapper);
+//                renderNativeAdForMediation(sanNative);
             }
 
             @Override
@@ -240,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void renderNativeAdView(SANAd sanNative) {
-        BaseNativeAd nativeAd = (BaseNativeAd) sanNative;
+        SANNativeAd nativeAd = (SANNativeAd) sanNative;
         View contentView = LayoutInflater.from(this).inflate(R.layout.ad_native_layout, mNativeContainer, false);
         TextView titleText = contentView.findViewById(R.id.native_title);
         TextView contentText = contentView.findViewById(R.id.native_text);
@@ -268,6 +269,24 @@ public class MainActivity extends AppCompatActivity {
         nativeAd.prepare(contentView, clickViews, null);
         mNativeContainer.removeAllViews();
         mNativeContainer.addView(contentView);
+    }
+
+    private void renderNativeAdForMediation(SANNativeAd nativeAd) {
+        if (mNativeContainer == null)
+            return;
+        mNativeContainer.removeAllViews();
+
+        SANNativeAdRenderer.SViewBinder builder = new SANNativeAdRenderer.SViewBinder.Builder(R.layout.ad_native_layout_mediation)
+                .iconImageId(R.id.native_icon_image)
+                .mainImageId(R.id.native_main_image)
+                .titleId(R.id.native_title)
+                .textId(R.id.native_text)
+                .callToActionId(R.id.native_button)
+                .build();
+        SANNativeAdRenderer adRenderer = new SANNativeAdRenderer(builder);
+        View adView = adRenderer.createAdView(this, nativeAd, null);
+        adRenderer.renderAdView(adView, nativeAd);
+        mNativeContainer.addView(adView);
     }
 
     @Override
