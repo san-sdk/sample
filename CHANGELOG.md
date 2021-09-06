@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.3.0.0(9.2-2021)
+## 1.3.0.1(9.6-2021)
 - Support Mediation
 
   [AdColony](https://github.com/san-sdk/sample/wiki/Mediation-AdColony)</Br>
