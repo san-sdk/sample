@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.0.1.+
+- Add capping and pacing control for mediation
+- update targetSdkVersion to 30
+
 ## 1.3.0.4(9.6-2021)
 - Support Mediation
 
