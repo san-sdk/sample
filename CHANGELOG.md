@@ -1,6 +1,10 @@
 # Change Log
 
-## 2.0.1.+
+## 2.0.2.+(10.12-2021)
+- improve performance
+- fix some rare Bug
+
+## 2.0.1.+(9.18-2021)
 - Add capping and pacing control for mediation
 - update targetSdkVersion to 30
 
