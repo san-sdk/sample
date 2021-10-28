@@ -1,12 +1,19 @@
 # Change Log
 
+## 3.1.0.+(10.28-2021)
+- Support Mediation
+  [Mintegral](https://github.com/san-sdk/sample/wiki/Mediation-Mintegral)
+  
+- Optimize full-screen ad experience
+- Fix some bugs
+
 ## 2.0.2.+(10.12-2021)
-- improve performance
-- fix some rare Bug
+- Improve performance
+- Fix some rare Bug
 
 ## 2.0.1.+(9.18-2021)
 - Add capping and pacing control for mediation
-- update targetSdkVersion to 30
+- Update targetSdkVersion to 30
 
 ## 1.3.0.4(9.6-2021)
 - Support Mediation
