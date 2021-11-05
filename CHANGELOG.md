@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.2.0.+(11.5-2021)
+- Memory optimisation
+- Fix some bugs
+
 ## 3.1.0.+(10.28-2021)
 - Support Mediation
   [Mintegral](https://github.com/san-sdk/sample/wiki/Mediation-Mintegral)
