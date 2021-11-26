@@ -3,7 +3,7 @@
 
 ## 3.3.0.+(11.26-2021)
 - Update target sdk version to android 30
-- Add [Mediation Test Suite]()
+- Add [Mediation Test Suite](https://github.com/san-sdk/sample/wiki/Test-Suite)
 - Update Adapters version
 - Fix some bugs
 
