@@ -1,6 +1,12 @@
 # Change Log
 > The fourth digit of the SDK version number is recommended to use `+`, the fourth digit of the version number is the iteration that fixes the issue and `+` is recommended to ensure that the most stable version is used.
 
+## 3.3.0.+(11.26-2021)
+- Update target sdk version to android 30
+- Add [Mediation Test Suite]()
+- Update Adapters version
+- Fix some bugs
+
 ## 3.2.0.+(11.5-2021)
 - Memory optimisation
 - Fix some bugs
