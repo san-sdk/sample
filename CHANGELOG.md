@@ -1,6 +1,9 @@
 # Change Log
 > The fourth digit of the SDK version number is recommended to use `+`, Last digit of the version number is the iteration that fixes the issue and `+` is recommended to ensure that the most stable version is used.
 
+## 3.4.+(12.20-2021)
+- Offline Ad optimisation
+
 ## 3.3.+(11.26-2021)
 - Update target sdk version to android 30
 - Add [Mediation Test Suite](https://github.com/san-sdk/sample/wiki/Test-Suite)
