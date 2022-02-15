@@ -1,6 +1,10 @@
 # Change Log
 > The fourth digit of the SDK version number is recommended to use `+`, Last digit of the version number is the iteration that fixes the issue and `+` is recommended to ensure that the most stable version is used.
 
+## 3.5.+(1.25-2021)
+- Optimize mediation adapters
+- Update ExoPlayer version to 2.16.0
+
 ## 3.4.+(12.20-2021)
 - Offline Ad optimisation
 
