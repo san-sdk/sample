@@ -1,15 +1,14 @@
 package com.san.sansample;
 
-import android.app.Application;
-
 import com.san.api.SanAdSdk;
 
-public class SanSampleApplication extends Application {
+import androidx.multidex.MultiDexApplication;
+
+public class SanSampleApplication extends MultiDexApplication {
 
     @Override
     public void onCreate() {
         super.onCreate();
-
         try {
             SanAdSdk.init(this);
         } catch (Exception e) {
