@@ -3,6 +3,14 @@
 
 ## 3.11.+(8.1-2022)
 - Optimize MediaView, Add VideoOptions api
+```Java
+VideoOptions videoOptions = new VideoOptions.Builder()
+            .setStartMuted(false)
+            .setSoundGravity(Gravity.START)
+            .build();
+mediaView.loadMadsMediaView(nativeAd.getNativeAd(), videoOptions);
+```
+
 - Fix some bugs
 
 ## 3.6.+(3.15-2021)
