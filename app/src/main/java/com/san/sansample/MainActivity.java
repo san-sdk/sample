@@ -1,6 +1,7 @@
 package com.san.sansample;
 
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.san.ads.SANBanner;
 import com.san.ads.SANInterstitial;
 import com.san.ads.SANNativeAd;
 import com.san.ads.SANReward;
+import com.san.ads.VideoOptions;
 import com.san.ads.base.IAdListener;
 import com.san.ads.core.SANAd;
 import com.san.ads.render.AdViewRenderHelper;
@@ -256,7 +258,32 @@ public class MainActivity extends AppCompatActivity {
         //icon
         AdViewRenderHelper.loadImage(iconImage.getContext(), nativeAd.getIconUrl(), iconImage);
         //media view
-        mediaLayout.loadMadsMediaView(nativeAd.getNativeAd());
+        mediaLayout.setVideoLifecycleCallbacks(new IAdListener.VideoLifecycleCallbacks() {
+            @Override
+            public void onVideoStart() {
+            }
+
+            @Override
+            public void onVideoPlay() {
+            }
+
+            @Override
+            public void onVideoPause() {
+            }
+
+            @Override
+            public void onVideoEnd() {
+            }
+
+            @Override
+            public void onVideoMute(boolean b) {
+            }
+        });
+        VideoOptions videoOptions = new VideoOptions.Builder()
+                .setStartMuted(false)
+                .setSoundGravity(Gravity.START)
+                .build();
+        mediaLayout.loadMadsMediaView(nativeAd.getNativeAd(), videoOptions);
 
         //click list
         List<View> clickViews = new ArrayList<>();
@@ -271,6 +298,12 @@ public class MainActivity extends AppCompatActivity {
         mNativeContainer.addView(contentView);
     }
 
+     /**
+     * You should use SANNativeAdRenderer , which has been adapted to adpaters' native advertising requirements.
+     *
+     * https://github.com/san-sdk/sample/wiki/SANNativeAdRenderer
+     * @param nativeAd
+     */
     private void renderNativeAdForMediation(SANNativeAd nativeAd) {
         if (mNativeContainer == null)
             return;
