@@ -1,6 +1,10 @@
 # Change Log
 > The fourth digit of the SDK version number is recommended to use `+`, Last digit of the version number is the iteration that fixes the issue and `+` is recommended to ensure that the most stable version is used.
 
+## 3.11.+(8.1-2022)
+- Optimize MediaView, Add VideoOptions api
+- Fix some bugs
+
 ## 3.6.+(3.15-2021)
 - Optimize mediation strategies
 - Fix some bugs
