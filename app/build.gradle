@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.san.sansample"
         minSdkVersion 16
-        targetSdkVersion 30
+        targetSdkVersion 31
         multiDexEnabled true
         versionCode 1
         versionName "1.0"
@@ -41,5 +41,5 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
-    implementation "com.myadsget:san-sdk:3.11.+"// SAN sdk
+    implementation "com.myadsget:san-sdk:3.12.+"// SAN sdk
 }
