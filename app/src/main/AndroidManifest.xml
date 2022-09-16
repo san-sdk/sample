@@ -25,7 +25,8 @@
         <meta-data android:name="com.san.APP_KEY"
             android:value="42195f94-54b3-4cff-8418-9d6e92dff521"/>
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
