@@ -1,6 +1,9 @@
 # Change Log
 > The fourth digit of the SDK version number is recommended to use `+`, Last digit of the version number is the iteration that fixes the issue and `+` is recommended to ensure that the most stable version is used.
 
+## 3.12.+(9.16-2022)
+- Added support for Android 12 devices for apps targeting API 31.
+
 ## 3.11.+(8.1-2022)
 - Optimize MediaView, Add VideoOptions api
 ```Java
