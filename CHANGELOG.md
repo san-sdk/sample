@@ -1,6 +1,11 @@
 # Change Log
 > The fourth digit of the SDK version number is recommended to use `+`, Last digit of the version number is the iteration that fixes the issue and `+` is recommended to ensure that the most stable version is used.
 
+## 3.12.6.1
+- 网络接口优化
+- 移除采集用户敏感数据(IMEI 等)
+- 需产品侧告知用户"需采集 gaid 等用户信息用于广告目的"后, 调用 SanAdSdk#notifyConsentStatus 接口. 注, 对收入影响巨大
+
 ## 3.12.+(9.16-2022)
 - Added support for Android 12 devices for apps targeting API 31.
 
