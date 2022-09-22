@@ -1,6 +1,7 @@
 package com.san.sansample;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,11 +10,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.san.ads.AdError;
 import com.san.ads.AdSize;
 import com.san.ads.MediaView;
 import com.san.ads.SANBanner;
 import com.san.ads.SANInterstitial;
+import com.san.ads.SANMultiNativeAd;
 import com.san.ads.SANNativeAd;
 import com.san.ads.SANReward;
 import com.san.ads.VideoOptions;
@@ -21,11 +27,10 @@ import com.san.ads.base.IAdListener;
 import com.san.ads.core.SANAd;
 import com.san.ads.render.AdViewRenderHelper;
 import com.san.ads.render.SANNativeAdRenderer;
+import com.san.ads.render.SViewBinder;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     private static final String ID_INTERSTITIAL = "1752";
@@ -39,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
     private SANInterstitial interstitial;
     private SANReward rewardedAd;
+
+    private RecyclerView mMultiAdContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +68,12 @@ public class MainActivity extends AppCompatActivity {
 
         Button nativeButton = findViewById(R.id.btn_native);
         nativeButton.setOnClickListener(view -> requestNativeAd(ID_NATIVE));
+
+        Button multiNativeBtn = findViewById(R.id.btn_request_multi);
+        multiNativeBtn.setOnClickListener(v -> requestMultiNative(ID_NATIVE));
+
+        mMultiAdContainer = findViewById(R.id.multi_ad_container);
+        mMultiAdContainer.setLayoutManager(new GridLayoutManager(this, 4));
     }
 
     private void requestInterstitialAd(String placementId) {
@@ -242,6 +255,63 @@ public class MainActivity extends AppCompatActivity {
         sanNative.load();//Request ad
     }
 
+    private void requestMultiNative(String placementId) {
+        SANMultiNativeAd multiNativeAd = new SANMultiNativeAd(this, placementId);
+        multiNativeAd.setAdLoadListener(new IAdListener.AdLoadListener<SANMultiNativeAd>() {
+            @Override
+            public void onAdLoaded(SANMultiNativeAd multiNativeAd) {
+                // Called when the ad for the given placementId has loaded.
+                renderMultiNativeAd(multiNativeAd);
+            }
+
+            @Override
+            public void onAdLoadError(AdError adError) {
+                // Called when a ad fails to load for the given placementId.
+                Log.e("-------", "load error: " + adError);
+            }
+        });
+        multiNativeAd.setAdActionListener(new IAdListener.AdActionListener() {
+            @Override
+            public void onAdImpressionError(AdError adError) {
+
+            }
+
+            @Override
+            public void onAdImpression() {
+
+            }
+
+            @Override
+            public void onAdClicked() {
+
+            }
+
+            @Override
+            public void onAdCompleted() {
+
+            }
+
+            @Override
+            public void onAdClosed(boolean b) {
+
+            }
+        });
+        multiNativeAd.setLoadAdNum(6);      // request ad number
+        multiNativeAd.load();
+    }
+
+    private void renderMultiNativeAd(SANMultiNativeAd multiNativeAd) {
+        SANNativeAdRenderer adRenderer = new SANNativeAdRenderer(
+                new SViewBinder.Builder(R.layout.layout_multi_native_item)
+                        .iconImageId(R.id.ad_image)
+                        .titleId(R.id.ad_text)
+                        .build()
+        );
+        MultiAdapter adapter = new MultiAdapter(adRenderer);
+        adapter.setAdData(multiNativeAd.getAdList());
+        mMultiAdContainer.setAdapter(adapter);
+    }
+
     private void renderNativeAdView(SANAd sanNative) {
         SANNativeAd nativeAd = (SANNativeAd) sanNative;
         View contentView = LayoutInflater.from(this).inflate(R.layout.ad_native_layout, mNativeContainer, false);
@@ -309,7 +379,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         mNativeContainer.removeAllViews();
 
-        SANNativeAdRenderer.SViewBinder builder = new SANNativeAdRenderer.SViewBinder.Builder(R.layout.ad_native_layout_mediation)
+        SViewBinder builder = new SViewBinder.Builder(R.layout.ad_native_layout_mediation)
                 .iconImageId(R.id.native_icon_image)
                 .mainImageId(R.id.native_main_image)
                 .titleId(R.id.native_title)
@@ -317,8 +387,8 @@ public class MainActivity extends AppCompatActivity {
                 .callToActionId(R.id.native_button)
                 .build();
         SANNativeAdRenderer adRenderer = new SANNativeAdRenderer(builder);
-        View adView = adRenderer.createAdView(this, nativeAd, null);
-        adRenderer.renderAdView(adView, nativeAd);
+        View adView = adRenderer.createAdView(this, nativeAd.getNativeAd(), null);
+        adRenderer.renderAdView(adView, nativeAd.getNativeAd());
         mNativeContainer.addView(adView);
     }
 

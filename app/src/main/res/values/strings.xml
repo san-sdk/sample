@@ -6,6 +6,7 @@
     <string name="request_ad_banner250">Load Banner300x250</string>
     <string name="request_ad_itl">Load Interstitial</string>
     <string name="request_ad_rwd">Load Rewarded</string>
+    <string name="request_ad_multi_native">Load Multi Native Ad</string>
     <string name="show_ad">Show Ad</string>
     <string name="native_container">Native Ad Show Container</string>
 </resources>
