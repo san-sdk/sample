@@ -1,12 +1,12 @@
 # Change Log
 > The fourth digit of the SDK version number is recommended to use `+`, Last digit of the version number is the iteration that fixes the issue and `+` is recommended to ensure that the most stable version is used.
 
-## 3.12.7.2
+## 3.12.7.7
 - Improve the success rate of net interface
 - Optimize SanAdSdk#notifyConsentStatus 
 - Fix unzip-security
 
-## 3.12.6.2
+## (Deprecated) 3.12.6.2
 - Improve the success rate of net interface
 - add SanAdSdk#notifyConsentStatus
 
