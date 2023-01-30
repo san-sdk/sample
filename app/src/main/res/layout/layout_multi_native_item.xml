@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:padding="@dimen/san_common_dimens_6dp">
 
-    <com.san.ads.MediaView
+    <ImageView
         android:id="@+id/ad_image"
         android:layout_width="@dimen/san_common_dimens_80dp"
         android:layout_height="@dimen/san_common_dimens_80dp"

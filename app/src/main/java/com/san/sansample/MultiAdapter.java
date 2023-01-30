@@ -3,11 +3,14 @@ package com.san.sansample;
 import android.annotation.SuppressLint;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.san.ads.base.INativeAd;
+import com.san.ads.render.AdViewRenderHelper;
 import com.san.ads.render.SANNativeAdRenderer;
 
 import java.util.ArrayList;
@@ -39,7 +42,7 @@ public class MultiAdapter extends RecyclerView.Adapter<MultiAdapter.AdHolder> {
     @Override
     public void onBindViewHolder(@NonNull AdHolder holder, int position) {
         if (position >= 0 && position < adList.size())
-            adRenderer.renderAdView(holder.itemView, adList.get(position));
+            holder.bindView(adList.get(position));
     }
 
     @Override
@@ -50,6 +53,20 @@ public class MultiAdapter extends RecyclerView.Adapter<MultiAdapter.AdHolder> {
     static class AdHolder extends RecyclerView.ViewHolder {
         AdHolder(View view) {
             super(view);
+        }
+
+        private final TextView textView = itemView.findViewById(R.id.ad_text);
+        private final ImageView adImgView = itemView.findViewById(R.id.ad_image);
+
+        public void bindView(INativeAd nativeAd) {
+            textView.setText(nativeAd.getTitle());
+            AdViewRenderHelper.loadImage(itemView.getContext(), nativeAd.getIconUrl(), adImgView);
+
+            List<View> clickViews = new ArrayList<>();
+            clickViews.add(textView);
+            clickViews.add(adImgView);
+            // view 参数传图标根View，list 参数 传需要点击的View
+            nativeAd.prepare(itemView, clickViews, null);
         }
     }
 }
