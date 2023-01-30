@@ -23,8 +23,7 @@ repositories {
 
 dependencies {
     // ... other project dependencies
-    // important: must call SanAdSdk#notifyConsentStatus(true) after the user agree with privacy police. The SDK will collect 'gaid' for ads after you called this method.
-    api "com.myadsget:san-sdk:3.13.0.1-ln"// SAN sdk
+    api "com.myadsget:san-sdk:3.13.0.6-ln"// SAN sdk
 }
 ```
 
@@ -58,6 +57,12 @@ Update your `AndroidManifest.xml` in order to complete the SDK integration. Add 
 
 ```xml
 <manifest>
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+        </intent>
+    </queries>
+    
    <application>
         <meta-data android:name="com.san.APP_KEY"
             android:value="YOUR_APP_KEY"/>
@@ -107,8 +112,10 @@ public class MyApplication extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        if (isMainProcess)
+        if (isMainProcess) {
+            // important: must call SanAdSdk#notifyConsentStatus(true) after the user agree with privacy police. The SDK will collect 'gaid' for ads after you called this method.
             SanAdSdk.init(this);
+        }
     }
 }
 ```
