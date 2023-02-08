@@ -229,13 +229,13 @@ SANMultiNativeAd multiNativeAd; // The BaseNativeAd is obtained from void onAdLo
 // Create SANNativeAdRenderer to render item view
 SANNativeAdRenderer adRenderer = new SANNativeAdRenderer(
     new SViewBinder.Builder(R.layout.layout_multi_native_item)
-            .iconImageId(R.id.ad_image)     // icon should be MediaView
+            .iconImageId(R.id.ad_image)
             .titleId(R.id.ad_text)
             .build();
 )
 
 // You can get native ads, this list's size <= load num
-List<INativeAd> nativeAds = multiNativeAd.getAdList();
+List<IMultiNativeAd> nativeAds = multiNativeAd.getAdList();
 
 // You can create a view with SANNativeAdRenderer, this code can use in RecyclerView's adpater
 View view = adRenderer.createAdView(context, null, parent);
