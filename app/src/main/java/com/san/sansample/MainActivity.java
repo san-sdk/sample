@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.san.ads.AdError;
 import com.san.ads.AdSize;
 import com.san.ads.MediaView;
@@ -21,11 +23,10 @@ import com.san.ads.base.IAdListener;
 import com.san.ads.core.SANAd;
 import com.san.ads.render.AdViewRenderHelper;
 import com.san.ads.render.SANNativeAdRenderer;
+import com.san.ads.render.SViewBinder;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     private static final String ID_INTERSTITIAL = "1752";
@@ -309,7 +310,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         mNativeContainer.removeAllViews();
 
-        SANNativeAdRenderer.SViewBinder builder = new SANNativeAdRenderer.SViewBinder.Builder(R.layout.ad_native_layout_mediation)
+        SViewBinder builder = new SViewBinder.Builder(R.layout.ad_native_layout_mediation)
                 .iconImageId(R.id.native_icon_image)
                 .mainImageId(R.id.native_main_image)
                 .titleId(R.id.native_title)
@@ -317,8 +318,8 @@ public class MainActivity extends AppCompatActivity {
                 .callToActionId(R.id.native_button)
                 .build();
         SANNativeAdRenderer adRenderer = new SANNativeAdRenderer(builder);
-        View adView = adRenderer.createAdView(this, nativeAd, null);
-        adRenderer.renderAdView(adView, nativeAd);
+        View adView = adRenderer.createAdView(this, nativeAd.getNativeAd(), null);
+        adRenderer.renderAdView(adView, nativeAd.getNativeAd());
         mNativeContainer.addView(adView);
     }
 
