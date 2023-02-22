@@ -6,7 +6,7 @@
 - Reduce SDK size
 - Some optimization
 - Fix some bugs
-- Change [SANNativeAdRenderer.SViewBinder](https://github.com/san-sdk/sample/wiki/SANNativeAdRenderer/_edit#version--31391) to SViewBinder
+- Change [SANNativeAdRenderer.SViewBinder](https://github.com/san-sdk/sample/wiki/SANNativeAdRenderer#version--31391) to SViewBinder
 
 ## 3.12.7.7
 - Improve the success rate of net interface
